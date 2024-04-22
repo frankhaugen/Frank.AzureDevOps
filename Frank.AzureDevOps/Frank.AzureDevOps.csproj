@@ -8,8 +8,8 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
-      <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="16.205.1" />
-      <PackageReference Include="Microsoft.VisualStudio.Services.Release.Client" Version="16.205.1" />
+      <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="19.225.1" />
+      <PackageReference Include="Microsoft.VisualStudio.Services.Release.Client" Version="19.225.1" />
     </ItemGroup>
 
 </Project>

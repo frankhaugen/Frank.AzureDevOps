@@ -4,6 +4,8 @@ using Microsoft.TeamFoundation.Build.WebApi;
 using Microsoft.TeamFoundation.Core.WebApi;
 using Microsoft.TeamFoundation.SourceControl.WebApi;
 using Microsoft.TeamFoundation.Work.WebApi;
+using Microsoft.VisualStudio.Services.Account.Client;
+using Microsoft.VisualStudio.Services.Identity.Client;
 using Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients;
 using Microsoft.VisualStudio.Services.WebApi;
 
@@ -45,6 +47,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IDevOpsBuildClient, DevOpsBuildClient>();
         services.AddSingleton<IDevOpsReleaseClient, DevOpsReleaseClient>();
         services.AddSingleton<IDevOpsBuildPipelineClient, DevOpsBuildPipelineClient>();
+        services.AddSingleton<IDevOpsPullRequestClient, DevOpsPullRequestClient>();
         
         // Register factories
         services.AddSingleton<ICredentialsFactory, CredentialsFactory>();
@@ -59,6 +62,8 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<ProjectHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Projects);
         services.AddSingleton<ReleaseHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Releases);
         services.AddSingleton<WorkHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Work);
+        services.AddSingleton<IdentityHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Identity);
+        services.AddSingleton<AccountHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Account);
 
         return services;
     }
