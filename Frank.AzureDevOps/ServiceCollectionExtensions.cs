@@ -48,7 +48,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IDevOpsReleaseClient, DevOpsReleaseClient>();
         services.AddSingleton<IDevOpsBuildPipelineClient, DevOpsBuildPipelineClient>();
         services.AddSingleton<IDevOpsPullRequestClient, DevOpsPullRequestClient>();
-        
+
         // Register factories
         services.AddSingleton<ICredentialsFactory, CredentialsFactory>();
         services.AddSingleton<IVssConnectionFactory, VssConnectionFactory>();
