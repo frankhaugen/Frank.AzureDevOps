@@ -62,7 +62,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<ProjectHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Projects);
         services.AddSingleton<ReleaseHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Releases);
         services.AddSingleton<WorkHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Work);
-        services.AddSingleton<IdentityHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Identity);
+        services.AddSingleton<IIdentityHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Identity);
         services.AddSingleton<AccountHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Account);
 
         return services;
