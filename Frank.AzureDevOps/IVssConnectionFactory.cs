@@ -4,5 +4,5 @@ namespace Frank.AzureDevOps;
 
 public interface IVssConnectionFactory
 {
-    VssConnection GetConnection();
+    IVssConnection? GetConnection();
 }

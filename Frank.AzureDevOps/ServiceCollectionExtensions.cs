@@ -13,7 +13,6 @@ namespace Frank.AzureDevOps;
 
 public static class ServiceCollectionExtensions
 {
-
     public static IServiceCollection AddDevOpsClient(this IServiceCollection services, string url, string personalAccessToken)
     {
         services.Configure<AzureDevOpsCredentials>(options =>
@@ -42,13 +41,12 @@ public static class ServiceCollectionExtensions
     private static IServiceCollection AddDevOpsClientInternal(this IServiceCollection services)
     {
         // Register clients
-        services.AddSingleton<IDevOpsGitClient, DevOpsGitClient>();
-        services.AddSingleton<IDevOpsProjectClient, DevOpsProjectClient>();
-        services.AddSingleton<IDevOpsBuildClient, DevOpsBuildClient>();
-        services.AddSingleton<IDevOpsReleaseClient, DevOpsReleaseClient>();
-        services.AddSingleton<IDevOpsBuildPipelineClient, DevOpsBuildPipelineClient>();
-        services.AddSingleton<IDevOpsPullRequestClient, DevOpsPullRequestClient>();
+        services.AddSingleton<IDevOpsInnerClients, DevOpsInnerClients>();
+        services.AddSingleton<IDevOpsClient, DevOpsClient>();
 
+        // Register filters
+        services.AddSingleton<FilterContainer>();
+        
         // Register factories
         services.AddSingleton<ICredentialsFactory, CredentialsFactory>();
         services.AddSingleton<IVssConnectionFactory, VssConnectionFactory>();
@@ -56,7 +54,7 @@ public static class ServiceCollectionExtensions
 
         // Factory pattern to in DI container
         services.AddSingleton<DevOpsPatCredentials>(provider => provider.GetRequiredService<ICredentialsFactory>().GetCredentials());
-        services.AddSingleton<VssConnection>(provider => provider.GetRequiredService<IVssConnectionFactory>().GetConnection());
+        services.AddSingleton<IVssConnection>(provider => provider.GetRequiredService<IVssConnectionFactory>().GetConnection()!);
         services.AddSingleton<GitHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Git);
         services.AddSingleton<BuildHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Builds);
         services.AddSingleton<ProjectHttpClient>(provider => provider.GetRequiredService<IDevOpsClientFactory>().Projects);

@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.Services.WebApi;
 
 namespace Frank.AzureDevOps;
 
-public class DevOpsClientFactory(VssConnection connection) : IDevOpsClientFactory
+public class DevOpsClientFactory(IVssConnection connection) : IDevOpsClientFactory
 {
     public GitHttpClient Git => connection.GetClient<GitHttpClient>();
     public BuildHttpClient Builds => connection.GetClient<BuildHttpClient>();
