@@ -2,7 +2,14 @@
 
 namespace Frank.AzureDevOps;
 
+/// <summary>
+/// Factory interface for creating VssConnection instances.
+/// </summary>
 public interface IVssConnectionFactory
 {
-    IVssConnection? GetConnection();
+    /// <summary>
+    /// Gets a VssConnection instance.
+    /// </summary>
+    /// <returns>A VssConnection instance or null if unable to create one.</returns>
+    VssConnection? GetConnection();
 }
