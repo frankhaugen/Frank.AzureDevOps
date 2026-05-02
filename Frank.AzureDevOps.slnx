@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="icon.png" />
+    <File Path="LICENSE" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Frank.AzureDevOps.Tests/Frank.AzureDevOps.Tests.csproj" />
+  <Project Path="Frank.AzureDevOps/Frank.AzureDevOps.csproj" />
+</Solution>
